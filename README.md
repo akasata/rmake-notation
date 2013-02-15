@@ -4,7 +4,8 @@ rmake-notation
 Rmakeで利用しているWiki記法「Rmake記法」を実現するためのgemです。
 
 - [ゲームを作成して共有するサイト - Rmake](http://rmake.jp/)
-- [Rmake記法を使ったデモサイトはこちら](http://rmake-notation.herokuapp.com/)（samplesに配置してあるあぷりです）
+- [Rmake記法の紹介とデモサイトはこちら](http://rmake-notation.herokuapp.com/)
+- [サンプルアプリのリポジトリはこちらです](https://github.com/akasata/rmake-notation-samples)
 
 ## SYSTEM REQUIREMENTS
 
@@ -19,10 +20,6 @@ Windows環境の方は以下のパッケージを利用するといいでしょ�
 Gemをインストールして使ってください。
 
     $ gem install rmake-notation
-
-## USAGE
-
-samplesを参照してください。
 
 ## TODO
 
