@@ -3,9 +3,8 @@ rmake-notation
 
 Rmakeで利用しているWiki記法「Rmake記法」を実現するためのgemです。
 
-- [[http://rmake.jp/|ゲームを作成して共有するサイト - Rmake]]
-- [[http://page.rmake.jp/wikis/1|Rmake記法]]（記述の仕方についてはこちらを参照してください）
-- [[http://rmake-notation.herokuapp.com/|Rmake記法を使ったデモサイトはこちら]]（samplesに配置してあります）
+- [ゲームを作成して共有するサイト - Rmake](http://rmake.jp/)
+- [Rmake記法を使ったデモサイトはこちら](http://rmake-notation.herokuapp.com/)（samplesに配置してあるあぷりです）
 
 ## SYSTEM REQUIREMENTS
 
@@ -13,7 +12,7 @@ Rmakeで利用しているWiki記法「Rmake記法」を実現するためのgem
 
 Windows環境の方は以下のパッケージを利用するといいでしょう。
 
-- [[http://www.artonx.org/data/asr/|ActiveScriptRuby and Other packages]]
+- [ActiveScriptRuby and Other packages](http://www.artonx.org/data/asr/)
 
 ## INSTALLATION
 
@@ -28,5 +27,6 @@ samplesを参照してください。
 ## TODO
 
 - specを書く（それに伴いテストしやすい構造に変更する）
-
+- サンプルサイトの例を完全にする
+- バグを取る
 
