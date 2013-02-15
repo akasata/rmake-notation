@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Rmake記法のサンプル</title>
+  <meta charset="utf-8">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <link href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.0/css/bootstrap.min.css" rel="stylesheet">
+  <script src='//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.0/js/bootstrap.min.js' type='text/javascript'></script>
+  <link href="//cdnjs.cloudflare.com/ajax/libs/prettify/r224/prettify.css" rel="stylesheet" type="text/css"/>
+  <script src='//cdnjs.cloudflare.com/ajax/libs/prettify/r224/prettify.js' type='text/javascript'></script>
+  <link href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.0/css/bootstrap-responsive.min.css" rel="stylesheet" />
+  
+  <style type="text/css">
+    @media (min-width: 980px) {
+      .main-container {
+        width: 979px;
+        margin: auto;
+        padding-top: 40px;
+      }
+    }
+    
+    .main-container {
+      width: 979px;
+      margin-top: 1em;
+    }
+    
+    pre.prettyprint {
+      margin-bottom: 0px;
+    }
+    
+  </style>
+  
+  
+</head>
+<body onload="beforePrettyPrint(); prettyPrint()">
+  
+<div class="navbar navbar-inverse navbar-fixed-top">
+  <div class="navbar-inner">
+    <div class="container">
+      <a class="brand" href="/">Rmake記法</a>
+    </div>
+  </div>
+</div>
+
+
+  
+<div class="container-fluid main-container">
+  <div class="row-fluid">
+    <%= yield %>
+  </div>
+  
+  <hr>
+
+  <footer>
+    <p>&copy; <a href="http://akasata.com">akasata</a>. All Rights Reserved. </p>
+  </footer>
+</div>
+
+
+<script type='text/javascript'>
+function beforePrettyPrint() {
+  if(/*@cc_on!@*/false) {
+    (function() {
+      var elPre = document.getElementsByTagName('pre');
+      for (var i = 0; i < elPre.length; i++)
+        if(elPre[i].className == 'prettyprint') {
+          var elBr = elPre[i].getElementsByTagName('br');
+          while(elBr.length)
+            elBr[0].parentNode.replaceChild(document.createTextNode('\r'), elBr[0]);
+        }
+    })();
+  }
+}
+</script>
+
+</body>
+</html>

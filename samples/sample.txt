@@ -1,0 +1,233 @@
+![jump_target 概要]概要
+
+Rmakeでは HTML を使用することができません。そこで、リンクなどを実現するためにRmake記法というものがあります。Rmake記法は、以下で利用することができます。
+
+-Rmake掲示板
+-Rmake Wiki
+-Rmakeのゲーム/ゲームデータ/素材の紹介文
+
+Rmake記法は以下のような機能を持ちます。
+
+-[jump 見出し 見出し]
+-[jump リンク リンク]
+-[jump 箇条書き 箇条書き]
+-[jump 文字装飾 文字装飾]
+-[jump Wikiリスト Wikiリスト]
+-[jump pre pre 表記（整形済みテキスト）]
+-[jump 引用 引用]
+-[jump 表 表]
+-[jump その他 その他の機能]
+
+![jump_target 見出し]見出しの書き方
+
+見出しは以下の四段階に対応しています。
+
+[code !見出し1
+!!見出し2
+!!!見出し3
+!!!!見出し4]
+
+以下、サンプルです。
+
+!見出し1
+!!見出し2
+!!!見出し3
+!!!!見出し4
+
+![jump_target リンク]リンクの書き方
+
+リンクは以下のように記述することができます。
+
+{{{code
+[link http://rmake.jp/ ゲームを作成して共有するサイト - Rmake]
+[link http://rmake.jp/]
+http://rmake.jp/
+}}}
+
+以下、上記の動作サンプルです。
+
+[link http://rmake.jp/ ゲームを作成して共有するサイト - Rmake]
+[link http://rmake.jp/]
+http://rmake.jp/
+
+
+![jump_target 箇条書き]箇条書き
+
+箇条書きは以下のように記述することができます。
+
+[code -アイテム1
+-アイテム2
+-アイテム3
+]
+
+以下、動作サンプルです。
+
+-アイテム1
+-アイテム2
+-アイテム3
+
+ネストなど、詳しくは[link http://page.rmake.jp/wikis/266 箇条書きの使い方]を参照してください。
+
+![jump_target 文字装飾]文字装飾の書き方
+
+文字装飾も出来ます。
+
+{{{code
+やはり、[bold 太文字]も欲しいよね。
+適当に[strike 打ち消された]わけです。
+
+装飾を変えた[font bold ことば]です。
+装飾を変えた[font italic ことば]です。
+装飾を変えた[font strike ことば]です。
+装飾を変えた[font #FF0000 ことば]です。
+装飾を変えた[font brue ことば]です。
+
+文字サイズを[font xx-large 変えること]も出来ます
+文字サイズを[font x-large 変えること]も出来ます
+文字サイズを[font large 変えること]も出来ます
+文字サイズを[font medium 変えること]も出来ます
+文字サイズを[font small 変えること]も出来ます
+文字サイズを[font x-small 変えること]も出来ます
+文字サイズを[font xx-small 変えること]も出来ます
+
+装飾を組み合わせて[font bold_strike 書くことも]できます。
+これくらいの[font bold_italic_strike_#FF0000_xx-large 装飾なら可能]です。
+順番は[font strike_bold 逆でも動作]します。
+
+}}}
+以下、動作サンプルです。
+
+やはり、[bold 太文字]も欲しいよね。
+適当に[strike 打ち消された]わけです。
+
+装飾を変えた[font bold ことば]です。
+装飾を変えた[font italic ことば]です。
+装飾を変えた[font strike ことば]です。
+装飾を変えた[font #FF0000 ことば]です。
+装飾を変えた[font brue ことば]です。
+
+文字サイズを[font xx-large 変えること]も出来ます
+文字サイズを[font x-large 変えること]も出来ます
+文字サイズを[font large 変えること]も出来ます
+文字サイズを[font medium 変えること]も出来ます
+文字サイズを[font small 変えること]も出来ます
+文字サイズを[font x-small 変えること]も出来ます
+文字サイズを[font xx-small 変えること]も出来ます
+
+装飾を組み合わせて[font bold_strike 書くことも]できます。
+これくらいの[font bold_italic_strike_#FF0000_xx-large 装飾なら可能]です。
+順番は[font strike_bold 逆でも動作]します。
+
+!Wiki/ゲーム/ゲームデータ素材へのリンク
+
+{{{code
+[wiki Rmake記法]
+[game 1]
+[game 1 Rmakeサンプルゲーム(1) - 隣町へのお使い]
+[item 21]
+[item 21 爺さん]
+文章中に[wiki Rmake記法]を書くことも可能です。
+
+[game_player 1]
+}}}
+
+以下、動作サンプルです。
+
+[wiki Rmake記法]
+[game 1]
+[game 1 Rmakeサンプルゲーム(1) - 隣町へのお使い]
+[item 21]
+[item 21 爺さん]
+
+文章中に[wiki Rmake記法]を書くことも可能です。
+
+[game_player 1]
+
+![jump_target Wikiリスト]Wikiリスト表記
+
+Wikiの一覧を表示する場合は以下のように記述します。
+
+[code [list スクリプト/-)]
+
+動作サンプルは以下の通りです。
+
+[list スクリプト/]
+
+![jump_target pre]pre 表記の書き方
+
+整形済みテキストは以下のように記述します。
+
+[code [code サンプルの
+    文章です。-)]
+
+動作サンプルは以下のとおりです。
+
+[code サンプルの
+    文章です。]
+
+整形済みテキストに大カッコなどを含む場合は以下のものを使うと簡単です。
+
+[code
+{{{code
+a[1-) = 10
+}}}
+]
+
+動作サンプルは以下のとおりです。
+
+{{{code
+a[1] = 10
+}}}
+
+詳しくは[wiki Rmake記法/pre表記（整形済みテキスト）]を参照してください。
+
+
+!動画記法
+
+{{{code
+[nicovideo sm5759935]
+[youtube _6JhfZA_pYs]
+}}}
+以下、動作サンプルです。
+
+[nicovideo sm5759935]
+[youtube _6JhfZA_pYs]
+
+
+![jump_target 引用]引用の書き方
+
+引用は以下のように記述します。
+
+[code [b http://rmake.jp/ 引用本文-)]
+
+動作サンプルは以下です。
+
+[b http://rmake.jp/ 引用本文]
+
+![jump_target 表]表の書き方
+
+表は以下のように記述します。
+
+{{{code
+|名前|説明|
+|ほげほげ|ほげほげの説明|
+|ふがふが|ふがふがの説明|
+}}}
+
+動作サンプルは以下です。
+
+|名前|説明|
+|ほげほげ|ほげほげの説明|
+|ふがふが|ふがふがの説明|
+
+
+詳しくは[wiki Rmake記法/表の書き方]を参照してください。
+
+![jump_target その他]その他の機能
+
+その他の機能については、以下を参照してください。
+
+-[link http://page.rmake.jp/wikis/265 jump記法]
+-[link http://page.rmake.jp/wikis/273 open_game_form記法]
+
+
