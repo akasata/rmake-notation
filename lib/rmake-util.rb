@@ -44,6 +44,3 @@ class Numeric #:nodoc:
   end
 end
 
-module Rmake::Util
-end
-

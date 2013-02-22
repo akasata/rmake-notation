@@ -23,6 +23,17 @@ module Rmake::Notation
     message += err.backtrace.join("\n")
     message += "文章にエラーもしくは不正な文字が含まれているようです。確認してください。"
   end
+  
+  def add_plugin(plugin)
+    @plugins ||= []
+    
+    if (plugin.respond_to?(:target?) && plugin.respond_to?(:execute))
+      @plugins << plugin
+      true
+    else
+      false
+    end
+  end
 
   def to_blocks(content)
     contents = Array.new
@@ -317,13 +328,34 @@ EOS
       end
       
     else
-      result = "[" + parsed_block.join(" ") + "]"
-      result
+      
+      result = execute_plugins(command, parsed_block)
+      if result
+        
+      else
+        result = "[" + parsed_block.join(" ") + "]"
+      end
     end
     
     result
   rescue => err
     "<div style=\"color:red;font-weight:bold;\">記述に間違いがあります: [" + parsed_block.join(" ") + "]</div>"
+  end
+  
+  def execute_plugins(command, parsed_block)
+    result = false
+    
+    @plugins ||= []
+    @plugins.each do |plugin|
+      if plugin.target?(command)
+        result = plugin.execute(command, parsed_block)
+        break
+      end
+    end
+    
+    result
+  rescue => err
+    parsed_block << "{{プラグインのエラー}}"
   end
   
   def inline_to_html_from_block(block)
