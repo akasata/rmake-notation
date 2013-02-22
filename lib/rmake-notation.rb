@@ -148,7 +148,6 @@ module Rmake::Notation
     else
       block = self.inline_to_html_from_block(block)
       block = block + "<br />" unless block == ""
-      p block
     end
     
     block
