@@ -30,6 +30,25 @@ Railsで使う際は、controllerに以下のように記述しています。he
     
     helper_method :generate_contents
 
+## PLUGIN
+
+Rmake記法はプラグインで拡張することができます。[version]と記述すると、本gemのバージョンを返すプラグインは以下のように記述することができます。
+
+    class VersionPlugin
+      def target?(command)
+        command == "version"
+      end
+      
+      def execute(command, block)
+        Rmake::Notation::VERSION.to_s
+      end
+    end
+
+    # registration
+    @notation = Object.new.extend Rmake::Notation
+    @notation.add_plugin(VersionPlugin.new)
+    @notation.generate_contents(content)
+
 ## LICENSE
 
 MIT License
