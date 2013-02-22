@@ -38,7 +38,7 @@ class String
   end
 end
 
-class Numeric #:nodoc:
+class Numeric
   def blank?
     false
   end
