@@ -21,6 +21,21 @@ Gemをインストールして使ってください。
 
     $ gem install rmake-notation
 
+Railsで使う際は、controllerに以下のように記述しています。helperに定義してもよいでしょう。
+
+    def generate_contents(content)
+      @rmake_notation ||= Object.new.extend Rmake::Notation
+      @rmake_notation.generate_contents(content)
+    end
+    
+    helper_method :generate_contents
+
+## LICENSE
+
+MIT License
+
+Copyright (c) 2013 Rmake Developers
+
 ## TODO
 
 - specを書く（それに伴いテストしやすい構造に変更する）
