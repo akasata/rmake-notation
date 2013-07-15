@@ -128,7 +128,7 @@ module Rmake::Notation
       s = generate_contents(block)
       a_name = "#{@title_list.length + 1}_#{len}"
       @title_list << [s, len, a_name]
-      block = "<h#{len} id=\"#{a_name}\"><a name=\"title_#{a_name}\"></a>#{s}</h#{len}>"
+      block = "<h#{len}><a name=\"#{a_name}\"></a>#{s}</h#{len}>"
 
     when /^[|][|][|]/
       block = self.process_table_line(block)
