@@ -7,6 +7,8 @@ module Rmake::Notation
   DOMAIN = "rmake.jp"
   
   def generate_contents(content)
+    @title_list ||= []
+    
     result = ''
     blocks = self.to_blocks(content)
     
@@ -24,6 +26,14 @@ module Rmake::Notation
     message += "文章にエラーもしくは不正な文字が含まれているようです。確認してください。"
   end
   
+  def title_list
+    @title_list
+  end
+  
+  def reflesh_title_list
+    @title_list = []
+  end
+  
   def add_plugin(plugin)
     @plugins ||= []
     
@@ -38,7 +48,7 @@ module Rmake::Notation
   def to_blocks(content)
     contents = Array.new
     # content.gsub(/(^[|].*?(\n)[^|])|(^[-].*?(?=((^[^-])|\z)))|(^[{][{][{].*?[}][}][}])|(^[\[].*?[\]])|(^[!]*.*?$)|(^http[:][\/][\/])|(?!^).*?$/m) {|s|
-    content.gsub(/(^[|][|][|].*?[|][|][|])|(^[|].*?(?=(^[^|]|\z)))|(^[-].*?(?=((^[^-])|\z)))|(^[{][{][{].*?[}][}][}])|([\[].*?[\]])|(^[!]*.*?$)|(^http[:][\/][\/])|(?!^).*?$/m) {|s|
+    content.gsub(/(^[|][|][|].*?[|][|][|])|(^[|].*?(?=(^[^|]|\z)))|(^[-].*?(?=((^[^-])|\z)))|(^[{][{][{].*?[}][}][}])|([\[].*?[\]])|(^[!]*.*?$)|(^http[:][\/][\/])|(^https[:][\/][\/])|(?!^).*?$/m) {|s|
       contents << s
     }
     contents
@@ -116,7 +126,9 @@ module Rmake::Notation
     when /^[!]/
       len = block.length - block.gsub!(/^[!]*/, "").length + 2
       s = generate_contents(block)
-      block = "<h#{len}>#{s}</h#{len}>"
+      a_name = "#{@title_list.length + 1}_#{len}"
+      @title_list << [s, len, a_name]
+      block = "<h#{len} id=\"#{a_name}\"><a name=\"title_#{a_name}\"></a>#{s}</h#{len}>"
 
     when /^[|][|][|]/
       block = self.process_table_line(block)
@@ -143,6 +155,9 @@ module Rmake::Notation
       block = list(block.split("\n"))
 
     when /^http[:][\/][\/]/
+      block = "<a href='#{block}'>#{block}</a><br />"
+      
+    when /^https[:][\/][\/]/
       block = "<a href='#{block}'>#{block}</a><br />"
       
     else
