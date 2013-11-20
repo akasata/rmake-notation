@@ -310,8 +310,11 @@ EOS
           style += "color:#{tag};"
         end
       end
+
+      text_data = parsed_block[2..parsed_block.length-1]
+      text_data = text_data.is_a?(Array) ? text_data.join(' ') : text_data.to_s
       
-      text = parsed_block[2] ? parsed_block[2..parsed_block.length-1] : nil
+      text = !text_data.blank? ? text_data : nil
       result = "<span style=\"#{style}\">#{text}</span>"
 
     when "nicovideo"
