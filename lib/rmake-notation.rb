@@ -284,7 +284,10 @@ EOS
       result = "<a href=\"##{link}\">" + title + "</a>"
       
     when "strike"
-      text = parsed_block[1] ? parsed_block[1..parsed_block.length-1] : nil
+      text_data = parsed_block[1..parsed_block.length-1]
+      text_data = text_data.is_a?(Array) ? text_data.join(' ') : text_data.to_s
+
+      text = !text_data.blank? ? text_data : nil
       result = "<span style=\"text-decoration:line-through;\">#{text}</span>"
 
     when "bold"
