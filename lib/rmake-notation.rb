@@ -237,27 +237,6 @@ module Rmake::Notation
       url = "http://#{DOMAIN}/games/#{id}/play"
       result = "<a href=\"#{url}\" title=\"#{text}\">#{text}</a>"
       
-    when "open_game_form"
-      id = parsed_block[1]
-      text = parsed_block[2] ? parsed_block[2] : nil
-      submit_label = parsed_block[3] ? parsed_block[3..parsed_block.length-1] : nil
-      if text.blank?
-        text = "パラメータ"
-      end
-      
-      if submit_label.blank?
-        submit_label = "ゲームを開く"
-      end
-      url = "http://#{DOMAIN}/games/#{id}/play"
-      result = <<-EOS
-<form method="get" action="#{url}">
-    #{text}
-    <input type="text" name="gd" maxlength="200" size=20 />
-    <input type="submit" value="#{submit_label}" />
-</form>
-EOS
-      
-      
     when "item"
       id = parsed_block[1]
       text = parsed_block[2] ? parsed_block[2..parsed_block.length-1] : nil
