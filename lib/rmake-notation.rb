@@ -313,19 +313,6 @@ module Rmake::Notation
   frameborder="0" allowfullscreen></iframe>
       EOS
 
-    when "game_player"
-      id = parsed_block[1]
-      @wiki_module_game_embed ||= false
-      unless @wiki_module_game_embed
-        result = "<script charset=\"utf-8\" src=\"http://rmake.jp/gadget/#{id.to_i}/js\"></script>"
-        @wiki_module_game_embed = true
-      else
-        text = parsed_block[2] ? parsed_block[2..parsed_block.length-1] : nil
-        text = text ? text.join(" ") : "ゲーム[ID:#{id}]"
-        url = "http://#{DOMAIN}/games/#{id}/play"
-        result = "<a href=\"#{url}\" title=\"#{text}\">#{text}</a>"
-      end
-      
     else
       
       result = execute_plugins(command, parsed_block)
