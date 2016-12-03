@@ -299,20 +299,6 @@ module Rmake::Notation
       text = !text_data.blank? ? text_data : nil
       result = "<span style=\"#{style}\">#{text}</span>"
 
-    when "nicovideo"
-      id = parsed_block[1]
-      result = <<-EOS
-<script type="text/javascript" src="http://ext.nicovideo.jp/thumb_watch/#{id}?w=490&h=307"></script>
-<noscript>JavaScriptが動いていないため、動画埋め込みが動作していません。</noscript>
-      EOS
-
-    when "youtube"
-      id = parsed_block[1]
-      result = <<-EOS
-<iframe width="425" height="349" src="http://www.youtube.com/embed/#{id}"
-  frameborder="0" allowfullscreen></iframe>
-      EOS
-
     else
       
       result = execute_plugins(command, parsed_block)
