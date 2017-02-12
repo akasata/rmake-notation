@@ -284,11 +284,13 @@ module Rmake::Notation
     when "font"
       tags = parsed_block[1] ? parsed_block[1].split("_") : []
       style = ""
+      css_class = ''
       tags.each do |tag|
         if tag == "bold"
           style += "font-weight:bold;"
         elsif tag == "italic"
           style += "font-style: italic;"
+          css_class = 'class="rn-italic"'
         elsif tag == "strike"
           style += "text-decoration:line-through;"
         elsif ["xx-small", "x-small", "small", "medium", "large", "x-large", "xx-large"].include?(tag)
@@ -302,7 +304,7 @@ module Rmake::Notation
       text_data = text_data.is_a?(Array) ? text_data.join(' ') : text_data.to_s
       
       text = !text_data.blank? ? text_data : nil
-      result = "<span style=\"#{style}\">#{text}</span>"
+      result = "<span style=\"#{style}\" #{css_class}>#{text}</span>"
 
     else
       
