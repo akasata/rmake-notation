@@ -271,6 +271,11 @@ module Rmake::Notation
 
     when "bold"
       text = parsed_block[1] ? parsed_block[1..parsed_block.length-1] : nil
+
+      if text.is_a? Array
+        text = text.join
+      end
+
       result = "<span style=\"font-weight:bold;\">#{text}</span>"
 
     when "memo"
