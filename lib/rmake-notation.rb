@@ -246,7 +246,7 @@ module Rmake::Notation
       
     when "wiki"
       text = parsed_block[1..parsed_block.length-1].join(" ")
-      url = "http://page.#{DOMAIN}/a/" + text
+      url = "https://#{DOMAIN}/page/a/" + text
       result = "<a href=\"#{url}\" title=\"#{text}\">#{text}</a>"
 
     when "jump_target"
